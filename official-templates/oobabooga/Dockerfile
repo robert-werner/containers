@@ -1,5 +1,7 @@
 # start from runpod pytorch container
-ARG BASE_IMAGE=runpod/pytorch:3.10-1.13.1-116
+ARG BASE_IMAGE
+ARG OOBABOOGA_REQUIREMENTS_FILE
+FROM ${BASE_IMAGE}
 
 FROM ${BASE_IMAGE} as dev-base
 
@@ -8,8 +10,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 ENV SHELL=/bin/bash
 
-RUN apt-key del 7fa2af80
-RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
 RUN apt-get update --yes && \
     apt-get upgrade --yes && \
     apt install --yes --no-install-recommends\
@@ -22,7 +22,7 @@ RUN /usr/bin/python3 -m pip install --upgrade pip
 RUN pip install jupyterlab
 RUN pip install ipywidgets
 
-RUN cd /workspace && git clone https://github.com/oobabooga/text-generation-webui.git && cd /workspace/text-generation-webui && pip install -r requirements.txt
+RUN cd /workspace && git clone https://github.com/robert-werner/text-generation-webui.git && cd /workspace/text-generation-webui && pip install -r ${OOBABOOGA_REQUIREMENTS_FILE}
 RUN cd /workspace/text-generation-webui && python download-model.py PygmalionAI/pygmalion-6b
 
 RUN mv /workspace/text-generation-webui /text-generation-webui
