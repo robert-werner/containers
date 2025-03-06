@@ -1,5 +1,5 @@
 variable "RELEASE" {
-    default = "1.2.1"
+    default = "1.2.2"
 }
 
 variable "PUBLISHER" {
@@ -27,7 +27,7 @@ target "default-rocm" {
         proxy = "../../container-template/proxy"
     }
     args = {
-        BASE_IMAGE = "kethertiphereth/pytorch:2.4.0-py3.12-rocm6.3.3-ubuntu24.04"
-        OOBABOOGA_REQUIREMENTS_FILE = "requirements-amd.txt"
+        BASE_IMAGE = "rocm/pytorch:rocm6.3.3_ubuntu22.04_py3.10_pytorch_release_2.4.0"
+        OOBABOOGA_REQUIREMENTS_FILE = "requirements_amd.txt"
     }
 }

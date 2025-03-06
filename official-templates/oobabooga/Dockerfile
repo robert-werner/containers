@@ -1,9 +1,10 @@
 # start from runpod pytorch container
 ARG BASE_IMAGE
-ARG OOBABOOGA_REQUIREMENTS_FILE
 FROM ${BASE_IMAGE}
 
 FROM ${BASE_IMAGE} as dev-base
+
+ARG OOBABOOGA_REQUIREMENTS_FILE
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -22,8 +23,10 @@ RUN /usr/bin/python3 -m pip install --upgrade pip
 RUN pip install jupyterlab
 RUN pip install ipywidgets
 
+RUN mkdir -p /workspace
+
 RUN cd /workspace && git clone https://github.com/robert-werner/text-generation-webui.git && cd /workspace/text-generation-webui && pip install -r ${OOBABOOGA_REQUIREMENTS_FILE}
-RUN cd /workspace/text-generation-webui && python download-model.py PygmalionAI/pygmalion-6b
+RUN cd /workspace/text-generation-webui
 
 RUN mv /workspace/text-generation-webui /text-generation-webui
 
