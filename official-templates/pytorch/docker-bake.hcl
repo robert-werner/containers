@@ -361,3 +361,17 @@ target "240-py310-rocm633-ubuntu2204" {
 
 }
 
+target "240-py311-rocm633-ubuntu2204" {
+    dockerfile = "Dockerfile"
+    tags = ["${PUBLISHER}/pytorch:2.4.0-py3.11-rocm6.3.3-ubuntu22.04"]
+        contexts = {
+        scripts = "../../container-template"
+        proxy = "../../container-template/proxy"
+        logo = "../../container-template"
+    }
+        args = {
+        BASE_IMAGE = "kethertiphereth/rocm-pytorch:rocm6.3.3_ubuntu22.04_py3.11_pytorch_release_2.4.0"
+        PYTHON_VERSION = "3.11"
+    }
+
+}
