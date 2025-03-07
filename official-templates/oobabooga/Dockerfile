@@ -30,6 +30,7 @@ RUN cd /workspace/text-generation-webui
 
 RUN mv /workspace/text-generation-webui /text-generation-webui
 
+
 # NGINX Proxy
 COPY --from=proxy nginx.conf /etc/nginx/nginx.conf
 COPY --from=proxy readme.html /usr/share/nginx/html/readme.html
