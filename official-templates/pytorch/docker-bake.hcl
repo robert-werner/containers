@@ -38,7 +38,8 @@ group "default" {
         "212-py310-rocm612-ubuntu2204",
         # ROCM 6.3.3
         "240-py312-rocm633-ubuntu2404",
-        "240-py310-rocm633-ubuntu2204"
+        "240-py310-rocm633-ubuntu2204",
+        "240-py311-rocm633-ubuntu2204",
     ]
 }
 
@@ -53,6 +54,7 @@ group "rocm" {
         "240-py310-rocm610-ubuntu2204",
         "240-py312-rocm633-ubuntu2404",
         "240-py310-rocm633-ubuntu2204",
+        "240-py311-rocm633-ubuntu2204",
     ]
 }
 
