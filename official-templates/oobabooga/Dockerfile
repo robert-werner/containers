@@ -28,8 +28,6 @@ RUN mkdir -p /workspace
 RUN cd /workspace && git clone https://github.com/oobabooga/text-generation-webui.git && cd /workspace/text-generation-webui && pip install -r ${OOBABOOGA_REQUIREMENTS_FILE}
 RUN cd /workspace/text-generation-webui && python download-model.py PygmalionAI/pygmalion-6b
 
-RUN mv /workspace/text-generation-webui /text-generation-webui
-
 # NGINX Proxy
 COPY --from=proxy nginx.conf /etc/nginx/nginx.conf
 COPY --from=proxy readme.html /usr/share/nginx/html/readme.html
