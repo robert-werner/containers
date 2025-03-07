@@ -37,8 +37,8 @@ group "default" {
         "201-py39-rocm612-ubuntu2004",
         "212-py310-rocm612-ubuntu2204",
         # ROCM 6.3.3
-        "240-py312-rocm633-ubuntu2404"
-        "240-py310-rocm633-ubuntu2404"
+        "240-py312-rocm633-ubuntu2404",
+        "240-py310-rocm633-ubuntu2204"
     ]
 }
 
@@ -52,7 +52,7 @@ group "rocm" {
         "212-py310-rocm61-ubuntu2204",
         "240-py310-rocm610-ubuntu2204",
         "240-py312-rocm633-ubuntu2404",
-        "240-py310-rocm633-ubuntu2404"
+        "240-py310-rocm633-ubuntu2204",
     ]
 }
 
@@ -343,4 +343,20 @@ target "240-py312-rocm633-ubuntu2404" {
         BASE_IMAGE = "rocm/pytorch:rocm6.3.3_ubuntu24.04_py3.12_pytorch_release_2.4.0"
         PYTHON_VERSION = "3.12"
     }
+}
+
+
+target "240-py310-rocm633-ubuntu2204" {
+    dockerfile = "Dockerfile"
+    tags = ["${PUBLISHER}/pytorch:2.4.0-py3.10-rocm6.3.3-ubuntu22.04"]
+        contexts = {
+        scripts = "../../container-template"
+        proxy = "../../container-template/proxy"
+        logo = "../../container-template"
+    }
+        args = {
+        BASE_IMAGE = "rocm/pytorch:rocm6.3.3_ubuntu22.04_py3.10_pytorch_release_2.4.0"
+        PYTHON_VERSION = "3.10"
+    }
+
 }

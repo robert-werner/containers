@@ -27,7 +27,7 @@ target "default-rocm" {
         proxy = "../../container-template/proxy"
     }
     args = {
-        BASE_IMAGE = "rocm/pytorch:rocm6.3.3_ubuntu22.04_py3.10_pytorch_release_2.4.0"
+        BASE_IMAGE = "kethertiphereth/pytorch:2.4.0-py3.10-rocm6.3.3-ubuntu22.04"
         OOBABOOGA_REQUIREMENTS_FILE = "requirements_amd.txt"
     }
 }
